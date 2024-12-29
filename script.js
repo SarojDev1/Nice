@@ -53,7 +53,7 @@ async function fetchScoreboardData() {
 
 // Fetch data when page loads
 window.onload = fetchScoreboardData;
-// Sample Data
+// Ensure you have 12 rows in your data array
 const data = [
     { rank: 1, teamName: "Team 1", alive: 4, points: 30, kills: 5 },
     { rank: 2, teamName: "Team 2", alive: 3, points: 60, kills: 6 },
@@ -69,30 +69,18 @@ const data = [
     { rank: 12, teamName: "Team 12", alive: 0, points: 5, kills: 0 },
 ];
 
-// Get the table body element
+// Generate the table rows dynamically
 const tableBody = document.getElementById("scoreboard-body");
+tableBody.innerHTML = ""; // Clear existing rows
 
-// Function to generate the scoreboard dynamically
 data.forEach((row) => {
     const tr = document.createElement("tr");
-
     tr.innerHTML = `
         <td class="rank">${row.rank}</td>
         <td class="team-name">${row.teamName}</td>
-        <td class="alive">${generateAliveBar(row.alive)}</td>
+        <td class="alive"><div class="alive-line" style="width: ${row.alive * 20}px;"></div></td>
         <td class="points">${row.points}</td>
         <td class="kills">${row.kills}</td>
     `;
-
-    // Add a special class for "wipeout" rows
-    if (row.alive === 0) tr.classList.add("wipeout");
     tableBody.appendChild(tr);
 });
-
-// Function to generate a green "alive" bar based on alive count
-function generateAliveBar(alive) {
-    if (alive === 0) return `<span class="wipeout">Wipeout</span>`;
-    return '<div class="alive-line" style="width:' + alive * 25 + 'px;"></div>';
-}
-
-

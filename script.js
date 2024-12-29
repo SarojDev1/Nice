@@ -1,7 +1,7 @@
 // API Key and Sheet Information
-const apiKey = 'AIzaSyAhytWe5enZPUd0hiiIrAN8ZbhpO4nbcrs'; // Updated API key
-const sheetId = '11L_NMzjjOQuGVVsshtP3Dz4r_mGbiO88gUB3Q9Vytf0';
-const range = 'Sheet1!A2:E12'; // Adjust the range to match your data
+const apiKey = 'AIzaSyAhytWe5enZPUd0hiiIrAN8ZbhpO4nbcrs'; // Use your updated API key
+const sheetId = '141Ea_xHBXPi6rItn07EiJMrUjVU7m9AFP8HFJi-Dm8I'; // Updated Sheet ID
+const range = 'Sheet1!A2:E12'; // Adjust this range based on where your data is
 
 const leaderboardUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
@@ -11,7 +11,6 @@ async function fetchScoreboardData() {
         const response = await fetch(leaderboardUrl);
         const data = await response.json();
 
-        // Check if the API returns valid data
         if (!data.values) {
             throw new Error("No data available");
         }
@@ -20,10 +19,8 @@ async function fetchScoreboardData() {
         scoreboardBody.innerHTML = ''; // Clear previous data
 
         data.values.forEach((row, index) => {
-            // Skip empty rows
-            if (row.length < 5) return;
+            if (row.length < 5) return; // Skip empty rows
 
-            // Insert rows dynamically
             const rowElement = document.createElement('tr');
             const alive = row[2]; // Alive value
 
@@ -55,10 +52,6 @@ async function fetchScoreboardData() {
         document.getElementById('error-message').style.display = 'block';
     }
 }
-
-// Call the function to fetch data
-fetchScoreboardData();
-
 
 // Call the function to fetch data
 fetchScoreboardData();

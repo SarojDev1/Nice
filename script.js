@@ -66,7 +66,7 @@ const data = [
     { rank: 9, teamName: "Team 9", alive: 2, points: 35, kills: 2 },
     { rank: 10, teamName: "Team 10", alive: 1, points: 25, kills: 3 },
     { rank: 11, teamName: "Team 11", alive: 4, points: 65, kills: 6 },
-    { rank: 12, teamName: "Team 12", alive: 0, points: 5, kills: 0 },
+    { rank: 12, teamName: "Team 12", alive: 5, points: 5, kills: 9 },
 ];
 
 // Generate the table rows dynamically

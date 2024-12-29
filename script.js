@@ -53,3 +53,46 @@ async function fetchScoreboardData() {
 
 // Fetch data when page loads
 window.onload = fetchScoreboardData;
+// Sample Data
+const data = [
+    { rank: 1, teamName: "Team 1", alive: 4, points: 30, kills: 5 },
+    { rank: 2, teamName: "Team 2", alive: 3, points: 60, kills: 6 },
+    { rank: 3, teamName: "Team 3", alive: 2, points: 55, kills: 5 },
+    { rank: 4, teamName: "Team 4", alive: 1, points: 40, kills: 4 },
+    { rank: 5, teamName: "Team 5", alive: 0, points: 20, kills: 3 },
+    { rank: 6, teamName: "Team 6", alive: 3, points: 50, kills: 4 },
+    { rank: 7, teamName: "Team 7", alive: 4, points: 45, kills: 5 },
+    { rank: 8, teamName: "Team 8", alive: 0, points: 10, kills: 1 },
+    { rank: 9, teamName: "Team 9", alive: 2, points: 35, kills: 2 },
+    { rank: 10, teamName: "Team 10", alive: 1, points: 25, kills: 3 },
+    { rank: 11, teamName: "Team 11", alive: 4, points: 65, kills: 6 },
+    { rank: 12, teamName: "Team 12", alive: 0, points: 5, kills: 0 },
+];
+
+// Get the table body element
+const tableBody = document.getElementById("scoreboard-body");
+
+// Function to generate the scoreboard dynamically
+data.forEach((row) => {
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+        <td class="rank">${row.rank}</td>
+        <td class="team-name">${row.teamName}</td>
+        <td class="alive">${generateAliveBar(row.alive)}</td>
+        <td class="points">${row.points}</td>
+        <td class="kills">${row.kills}</td>
+    `;
+
+    // Add a special class for "wipeout" rows
+    if (row.alive === 0) tr.classList.add("wipeout");
+    tableBody.appendChild(tr);
+});
+
+// Function to generate a green "alive" bar based on alive count
+function generateAliveBar(alive) {
+    if (alive === 0) return `<span class="wipeout">Wipeout</span>`;
+    return '<div class="alive-line" style="width:' + alive * 25 + 'px;"></div>';
+}
+
+

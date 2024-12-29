@@ -50,7 +50,7 @@ table.scoreboard {
 table.scoreboard th {
     padding: 12px;
     background-color: #222; /* Dark background for headers */
-    color: white; /* White header text */
+    color: #39FF14; /* Neon green header text */
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -84,22 +84,6 @@ table.scoreboard td.kills {
     color: black; /* Set text color to black */
 }
 
-/* Green Line for Alive column */
-.alive-line {
-    display: inline-block;
-    height: 6px; /* Line thickness */
-    background-color: green;
-    margin: 5px auto; /* Center the line */
-    width: 100%; /* Full width line */
-}
-
-/* Wipeout Text */
-table.scoreboard td.alive.wipeout {
-    background-color: #111; /* Dark background for wipeout */
-    color: red; /* Red text for wipeout */
-    font-weight: bold;
-}
-
 /* Hover Effect on Rows */
 table.scoreboard tr:hover {
     background-color: #39FF14; /* Neon green hover effect */
@@ -108,31 +92,24 @@ table.scoreboard tr:hover {
     transition: background-color 0.3s, color 0.3s;
 }
 
-/* Top 3 Ranks */
-table.scoreboard tr:nth-child(1) td,
-table.scoreboard tr:nth-child(2) td,
-table.scoreboard tr:nth-child(3) td {
-    background-color: #ffdf00; /* Gold, Silver, and Bronze for top 3 */
-    color: #222;
-    font-weight: bold;
+/* Alive Green Line */
+.alive-line {
+    display: inline-block;
+    width: 20px;
+    height: 4px;
+    background-color: green;
+    margin-top: 4px;
 }
 
-/* Table Bottom Border */
-table.scoreboard tr:last-child td {
-    border-bottom: none;
-}
-
-/* Responsive Design for Smaller Screens */
+/* Responsive Design */
 @media (max-width: 600px) {
     table.scoreboard th, table.scoreboard td {
-        padding: 8px; /* Smaller padding for smaller screens */
-        font-size: 0.9rem; /* Adjust font size */
+        padding: 8px;
+        font-size: 0.9rem;
     }
-
     .title {
-        font-size: 1.5rem; /* Smaller title on mobile */
+        font-size: 1.5rem;
     }
-
     .container {
         width: 90%;
         padding: 15px;

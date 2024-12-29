@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Scoreboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Scoreboard</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="title">Scoreboard</h1>
+        <h1 class="title">SCOREBOARD</h1>
         <table class="scoreboard">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Team Name</th>
-                    <th>Alive</th>
-                    <th>Points</th>
-                    <th>Kills</th>
+                    <th>TEAM NAME</th>
+                    <th>ALIVE</th>
+                    <th>POINTS</th>
+                    <th>KILLS</th>
                 </tr>
             </thead>
             <tbody id="scoreboard-body">
-                <!-- 12 Rows will be inserted dynamically here, but the 12th row will be hidden -->
+                <!-- Rows will be dynamically generated here -->
             </tbody>
         </table>
-        <p id="error-message" style="display: none; color: red; text-align: center;">
-            Unable to load data. Please try again later.
-        </p>
     </div>
     <script src="script.js"></script>
 </body>

@@ -10,7 +10,11 @@ async function fetchScoreboardData() {
     try {
         const response = await fetch(leaderboardUrl);
         const data = await response.json();
-        if (!data.values) throw new Error("No data available");
+
+        // Check if the API returns valid data
+        if (!data.values) {
+            throw new Error("No data available");
+        }
 
         const scoreboardBody = document.getElementById('scoreboard-body');
         scoreboardBody.innerHTML = ''; // Clear previous data
@@ -47,10 +51,14 @@ async function fetchScoreboardData() {
             scoreboardBody.appendChild(rowElement);
         });
     } catch (error) {
-        console.error("Error fetching scoreboard data:", error);
+        console.error("Error fetching scoreboard data:", error); // Log the error for debugging
         document.getElementById('error-message').style.display = 'block';
     }
 }
+
+// Call the function to fetch data
+fetchScoreboardData();
+
 
 // Call the function to fetch data
 fetchScoreboardData();

@@ -1,11 +1,10 @@
-// API Key and Sheet Information
-const apiKey = 'AIzaSyAhytWe5enZPUd0hiiIrAN8ZbhpO4nbcrs'; // Use your updated API key
-const sheetId = '141Ea_xHBXPi6rItn07EiJMrUjVU7m9AFP8HFJi-Dm8I'; // Updated Sheet ID
-const range = 'Sheet1!A2:E12'; // Adjust this range based on where your data is
+// Google Sheets API URL
+const sheetId = '141Ea_xHBXPi6rItn07EiJMrUjVU7m9AFP8HFJi-Dm8I';
+const range = 'Sheet1!A2:E13'; // Range of cells to get
+const apiKey = 'AIzaSyAhytWe5enZPUd0hiiIrAN8ZbhpO4nbcrs'; // Your API Key
 
 const leaderboardUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
 
-// Fetch and display data from Google Sheets API
 async function fetchScoreboardData() {
     try {
         const response = await fetch(leaderboardUrl);
@@ -18,13 +17,12 @@ async function fetchScoreboardData() {
         const scoreboardBody = document.getElementById('scoreboard-body');
         scoreboardBody.innerHTML = ''; // Clear previous data
 
-        data.values.forEach((row, index) => {
-            if (row.length < 5) return; // Skip empty rows
+        data.values.slice(0, 11).forEach((row, index) => { // Only take the first 11 rows
+            if (row.length < 5) return;
 
             const rowElement = document.createElement('tr');
             const alive = row[2]; // Alive value
 
-            // Handle alive data with green lines
             let aliveContent = '';
             if (alive == 4) {
                 aliveContent = `<div class="alive-line" style="height: 4px;"></div>`;
@@ -48,10 +46,10 @@ async function fetchScoreboardData() {
             scoreboardBody.appendChild(rowElement);
         });
     } catch (error) {
-        console.error("Error fetching scoreboard data:", error); // Log the error for debugging
+        console.error("Error fetching scoreboard data:", error);
         document.getElementById('error-message').style.display = 'block';
     }
 }
 
-// Call the function to fetch data
-fetchScoreboardData();
+// Fetch data when page loads
+window.onload = fetchScoreboardData;

@@ -1,115 +1,13 @@
-/* Global Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background: #111; /* Dark background for esports theme */
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden; /* Prevent scrolling */
-}
-
-/* Container */
-.container {
-    width: 100%;
-    max-width: 900px;
-    background-color: #1c1c1c; /* Slightly lighter dark background */
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect for esports */
-    text-align: center;
-    position: relative;
-}
-
-/* Title */
-.title {
-    font-size: 2rem;
-    color: #39FF14; /* Neon green text */
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* Table Styles */
-table.scoreboard {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 1rem;
-    text-align: center;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 255, 0, 0.5); /* Neon green glow */
-}
-
-/* Table Header */
-table.scoreboard th {
-    padding: 12px;
-    background-color: #222; /* Dark background for headers */
-    color: #39FF14; /* Neon green header text */
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Table Data Rows */
-table.scoreboard td {
-    padding: 10px;
-    background-color: #333; /* Slightly lighter dark rows */
-    color: #bbb;
-    border-bottom: 1px solid #444;
-}
-
-/* Rank Color */
-table.scoreboard td.rank {
-    background-color: #f1e15b; /* Light yellow for rank */
-    color: black; /* Set text color to black */
-}
-
-/* Team Name Color */
-table.scoreboard td.team-name {
-    background-color: #d3d3d3; /* Light grey for team name */
-    color: black; /* Set text color to black */
-}
-
-/* Alive, Points, Kills Color */
-table.scoreboard td.alive,
-table.scoreboard td.points,
-table.scoreboard td.kills {
-    background-color: #d7a7f1; /* Light purple for alive, points, kills */
-    color: black; /* Set text color to black */
-}
-
-/* Hover Effect on Rows */
-table.scoreboard tr:hover {
-    background-color: #39FF14; /* Neon green hover effect */
-    color: #000;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Alive Green Line */
-.alive-line {
-    display: inline-block;
-    width: 20px;
-    height: 4px;
-    background-color: green;
-    margin-top: 4px;
-}
-
-/* Responsive Design */
-@media (max-width: 600px) {
-    table.scoreboard th, table.scoreboard td {
-        padding: 8px;
-        font-size: 0.9rem;
+        padding: 8px; /* Smaller padding for smaller screens */
+        font-size: 0.9rem; /* Adjust font size */
     }
+
     .title {
-        font-size: 1.5rem;
+
+
+        font-size: 1.5rem; /* Smaller title on mobile */
     }
+
     .container {
         width: 90%;
         padding: 15px;

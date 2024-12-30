@@ -19,7 +19,6 @@ async function fetchScoreboardData() {
 
         // Parse rows from row 2 onwards (assuming row 1 contains headers)
         const parsedData = data.values.map((row, index) => ({
-            rank: index + 1,
             teamName: row[1] || "Unknown", // Default to "Unknown" if no team name
             abbreviation: row[0] || "N/A", // Default to "N/A" if no abbreviation
             alive: parseInt(row[2] || 0), // Default to 0 if alive is missing
@@ -37,7 +36,6 @@ async function fetchScoreboardData() {
         // Ensure there are always 12 rows (add placeholders if needed)
         while (sortedData.length < 12) {
             sortedData.push({
-                rank: sortedData.length + 1,
                 teamName: "Placeholder Team",
                 abbreviation: "N/A",
                 alive: 0,
@@ -47,7 +45,7 @@ async function fetchScoreboardData() {
         }
 
         // Generate rows dynamically
-        sortedData.forEach((row, index) => {
+        sortedData.forEach((row) => {
             const rowElement = document.createElement('tr');
             const aliveContent =
                 row.alive === 0
@@ -55,8 +53,7 @@ async function fetchScoreboardData() {
                     : `<td class="alive"><div class="alive-line" style="width: ${row.alive * 20}px;"></div></td>`;
 
             rowElement.innerHTML = `
-                <td class="rank">${row.rank}</td>
-                <td class="team-name">${row.teamName} (${row.abbreviation})</td>
+                <td class="team-name">${row.abbreviation}</td>
                 ${aliveContent}
                 <td class="points">${row.points}</td>
                 <td class="kills">${row.kills}</td>

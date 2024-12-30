@@ -84,14 +84,6 @@ table.scoreboard td.kills {
     color: black; /* Set text color to black */
 }
 
-/* Hover Effect on Rows */
-table.scoreboard tr:hover {
-    background-color: #39FF14; /* Neon green hover effect */
-    color: #000;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
 /* Top 3 Ranks */
 table.scoreboard tr:nth-child(1) td,
 table.scoreboard tr:nth-child(2) td,
@@ -101,18 +93,15 @@ table.scoreboard tr:nth-child(3) td {
     font-weight: bold;
 }
 
-/* Wipeout Text */
-table.scoreboard td.wipeout {
-    color: red;
-    font-weight: bold;
-}
 /* Wipeout Text Style */
 .wipeout {
     color: red;
     font-weight: bold;
     text-transform: uppercase;
     background-color: #550000; /* Dark red background for wipeout */
+    text-align: center; /* Align text to center */
 }
+
 /* Align 'Wipeout' to center */
 .wipeout td {
     text-align: center;
@@ -140,8 +129,6 @@ table.scoreboard tr:last-child td {
     }
 
     .title {
-
-
         font-size: 1.5rem; /* Smaller title on mobile */
     }
 

@@ -12,110 +12,104 @@ body {
     overflow: hidden; /* Prevent scrolling */
 }
 
-/* Container */
+/* Container for Live Tracker */
 .container {
     width: 100%;
-    max-width: 800px; /* Adjust width for a larger layout */
+    max-width: 400px; /* Adjust width for smaller layout */
     background-color: #000; /* Pure black background for esports */
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     position: relative;
-    border-radius: 10px;
+    border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Add shadow for depth */
+    overflow-y: auto; /* Allow scrolling if content exceeds */
 }
 
 /* Title */
 .title {
-    font-size: 1.5rem; /* Larger title for emphasis */
+    font-size: 1.2rem; /* Smaller title for compact layout */
     color: #39FF14; /* Neon green text */
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 /* Table Styles */
 table.scoreboard {
     width: 100%;
-    border-collapse: collapse; /* Remove gaps between table elements */
+    border-collapse: collapse;
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Smaller font size */
     text-align: center;
-    border: 1px solid #333; /* Dark border for definition */
-    table-layout: fixed; /* Prevents columns from expanding */
+    border: 1px solid #333;
 }
 
 /* Table Header */
 table.scoreboard th {
-    padding: 5px 8px; /* Reduced padding to minimize gaps */
-    background-color: #2d1b69; /* Dark purple background for headers */
-    color: #39FF14; /* Neon green header text */
+    padding: 8px;
+    background-color: #2d1b69;
+    color: #39FF14;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 0.9rem; /* Smaller font size for headers */
+    font-size: 0.9rem; /* Smaller header text */
 }
 
 /* Table Rows */
 table.scoreboard td {
-    padding: 5px 8px; /* Reduced padding for tighter space */
-    color: #ffffff; /* White text */
+    padding: 8px 5px; /* Reduced padding */
+    color: #ffffff;
     font-weight: bold;
-    border-bottom: 1px solid #444; /* Subtle border between rows */
+    border-bottom: 1px solid #444;
 }
 
 /* Rank Column (#) */
 table.scoreboard td:nth-child(1) {
-    background-color: #f1e15b; /* Light yellow */
-    color: #000; /* Black text */
+    background-color: #f1e15b;
+    color: #000;
     font-size: 1rem;
 }
 
 /* Team Name Column */
 table.scoreboard td:nth-child(2) {
-    background-color: #ffffff; /* White */
-    color: #000; /* Black text */
+    background-color: #ffffff;
+    color: #000;
     text-align: left;
-    padding-left: 10px; /* Align text inside cell */
+    padding-left: 5px;
 }
 
 /* Alive Column */
 table.scoreboard td:nth-child(3) {
-    background-color: #d7a7f1; /* Light purple */
-    color: #000; /* Black text */
+    background-color: #d7a7f1;
+    color: #000;
     font-weight: bold;
     padding: 0;
 }
 
 /* Points (PTS) Column */
 table.scoreboard td:nth-child(4) {
-    background-color: #d7a7f1; /* Light purple */
-    color: #000; /* Black text */
+    background-color: #d7a7f1;
+    color: #000;
     font-weight: bold;
 }
 
 /* Kills Column */
 table.scoreboard td:nth-child(5) {
-    background-color: #d7a7f1; /* Light purple */
-    color: #000; /* Black text */
+    background-color: #d7a7f1;
+    color: #000;
     font-weight: bold;
-}
-
-/* Row Height */
-table.scoreboard tr {
-    height: 30px; /* Adjusted row height for better visibility */
-    border: none;
 }
 
 /* Green Bar for Alive Column */
 .alive-line {
     display: inline-block;
-    width: 100%; /* Dynamic width handled in JS */
-    max-width: 60px; /* Reduced max width for alive */
+    width: 100%; 
+    max-width: 50px; /* Smaller max width for alive bar */
     height: 8px; /* Smaller height */
-    background-color: #39FF14; /* Neon green for alive bars */
+    background-color: #39FF14;
     border-radius: 5px;
-    margin: auto;
+    margin: 2px auto;
 }
 
 /* Wipeout Text */
@@ -123,55 +117,24 @@ table.scoreboard tr {
     color: red;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #550000; /* Dark red background for wipeout */
+    background-color: #550000;
     text-align: center;
-    padding: 5px 0;
-}
-
-/* Live Tracker Bar */
-.alive-line {
-    height: 10px;
-    background-color: #39FF14;
-    border-radius: 5px;
-    transition: width 0.5s ease;
+    padding: 3px 0;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
     table.scoreboard th,
     table.scoreboard td {
-        padding: 4px 6px; /* Even less padding on small screens */
-        font-size: 0.8rem; /* Smaller font size on small screens */
+        padding: 6px;
+        font-size: 0.8rem;
     }
 
     .title {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .container {
         width: 90%;
     }
-}
-
-/* Hover Effect for Table Rows */
-table.scoreboard tr:hover {
-    background-color: #2d1b69; /* Dark purple hover effect */
-    color: #fff;
-}
-
-/* Highlighting 12th Place Row */
-table.scoreboard tr:nth-child(12) {
-    background-color: #550055; /* Highlight color for rank 12 */
-    color: #fff;
-}
-
-/* Styling for Placeholder Rows */
-.placeholder-row {
-    background-color: #555555; /* Gray background for placeholders */
-    color: #aaa; /* Lighter text for placeholders */
-}
-
-/* Add Glow Effect for Rank 1 */
-table.scoreboard tr:nth-child(1) {
-    box-shadow: 0 0 10px #39FF14; /* Neon glow effect for rank 1 */
 }

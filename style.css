@@ -1,7 +1,7 @@
 /* Global Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background: #111; /* Dark background for esports theme */
+    background: #1c1c1c; /* Slightly lighter dark background */
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -15,127 +15,132 @@ body {
 /* Container */
 .container {
     width: 100%;
-    max-width: 800px; /* Adjusted for a compact layout */
-    background-color: #1c1c1c; /* Slightly lighter dark background */
-    border-radius: 10px;
-    padding: 15px; /* Reduced padding for compactness */
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4); /* Subtle glow for esports theme */
+    max-width: 1200px; /* Wider layout for better readability */
+    background-color: #222; /* Dark esports-style background */
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5); /* Subtle green glow effect */
     text-align: center;
-    position: relative;
 }
 
 /* Title */
 .title {
-    font-size: 1.8rem; /* Adjusted for compact layout */
+    font-size: 1.8rem;
     color: #39FF14; /* Neon green text */
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 10px;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px; /* Slightly tighter spacing */
+    letter-spacing: 2px;
 }
 
 /* Table Styles */
 table.scoreboard {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.95rem; /* Slightly smaller for compactness */
+    table-layout: fixed; /* Uniform column widths */
+    font-size: 1rem;
     text-align: center;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4); /* Subtle green glow */
+    background-color: #1c1c1c; /* Match the esports theme */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
 }
 
-/* Table Header */
+/* Header Row */
 table.scoreboard th {
-    padding: 10px;
-    background-color: #222; /* Dark background for headers */
-    color: #39FF14; /* Neon green header text */
+    padding: 10px 5px;
+    background-color: #333; /* Slightly darker header background */
+    color: #39FF14; /* Neon green text */
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 0.8px; /* Tighter spacing for compactness */
+    letter-spacing: 1px;
+    border: 1px solid #444; /* Subtle border */
 }
 
-/* Table Data Rows */
+/* Data Rows */
 table.scoreboard td {
-    padding: 10px; /* Adjusted padding for compactness */
-    color: #000; /* Black text for better readability */
+    padding: 8px 5px;
+    border: 1px solid #444; /* Subtle border for uniformity */
+    color: #fff; /* White text for contrast */
+    vertical-align: middle;
+}
+
+/* Uniform Row Heights */
+table.scoreboard tr {
+    height: 40px; /* Consistent height for all rows */
+}
+
+/* Rank Column */
+table.scoreboard td:nth-child(1),
+table.scoreboard th:nth-child(1) {
+    background-color: #f1e15b; /* Light yellow */
+    color: #000; /* Black text */
     font-weight: bold;
 }
 
-/* Rank Column (#) */
-table.scoreboard td:nth-child(1) {
-    background-color: #f1e15b; /* Light yellow */
-}
-
-/* Team Name Column */
-table.scoreboard td:nth-child(2) {
-    background-color: #ffffff; /* White */
+/* Team Column */
+table.scoreboard td:nth-child(2),
+table.scoreboard th:nth-child(2) {
+    background-color: #fff; /* White background for team names */
     color: #000; /* Black text */
+    font-weight: bold;
 }
 
 /* Alive Column */
-table.scoreboard td:nth-child(3) {
+table.scoreboard td:nth-child(3),
+table.scoreboard th:nth-child(3) {
     background-color: #d7a7f1; /* Light purple */
     color: #000; /* Black text */
+    font-weight: bold;
 }
 
-/* Points (PTS) Column */
-table.scoreboard td:nth-child(4) {
+/* Points Column */
+table.scoreboard td:nth-child(4),
+table.scoreboard th:nth-child(4) {
     background-color: #d7a7f1; /* Light purple */
     color: #000; /* Black text */
+    font-weight: bold;
 }
 
 /* Kills Column */
-table.scoreboard td:nth-child(5) {
+table.scoreboard td:nth-child(5),
+table.scoreboard th:nth-child(5) {
     background-color: #d7a7f1; /* Light purple */
     color: #000; /* Black text */
+    font-weight: bold;
 }
 
-/* Hover Effect on Rows */
-table.scoreboard tr:hover {
-    background-color: #39FF14; /* Neon green hover effect */
-    color: #000;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Wipeout Text */
+/* Wipeout Text (if alive = 0) */
 .wipeout {
     color: red;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #550000; /* Dark red background for wipeout */
+    background-color: #550000; /* Dark red for wiped-out teams */
     text-align: center;
 }
 
-/* Green Line for Alive column */
+/* Progress Bar for Alive Column */
 .alive-line {
     display: inline-block;
-    width: 20px;
-    height: 4px;
-    background-color: green;
-    margin-top: 4px;
-}
-
-/* Table Bottom Border */
-table.scoreboard tr:last-child td {
-    border-bottom: none;
+    height: 10px; /* Consistent height for the progress bar */
+    background-color: #39FF14; /* Neon green progress bar */
+    border-radius: 5px;
 }
 
 /* Responsive Design for Smaller Screens */
 @media (max-width: 600px) {
     table.scoreboard th,
     table.scoreboard td {
-        padding: 6px; /* Smaller padding for smaller screens */
-        font-size: 0.8rem; /* Adjusted font size */
+        padding: 5px;
+        font-size: 0.9rem;
     }
 
     .title {
-        font-size: 1.3rem; /* Smaller title on mobile */
+        font-size: 1.5rem;
     }
 
     .container {
+        padding: 10px;
         width: 95%;
-        padding: 10px; /* Reduced padding for small screens */
     }
 }

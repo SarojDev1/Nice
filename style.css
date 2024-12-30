@@ -106,6 +106,17 @@ table.scoreboard td.wipeout {
     color: red;
     font-weight: bold;
 }
+/* Wipeout Text Style */
+.wipeout {
+    color: red;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: #550000; /* Dark red background for wipeout */
+}
+/* Align 'Wipeout' to center */
+.wipeout td {
+    text-align: center;
+}
 
 /* Table Bottom Border */
 table.scoreboard tr:last-child td {

@@ -143,3 +143,32 @@ table.scoreboard tr {
         width: 90%;
     }
 }
+
+/* Hover Effect for Table Rows */
+table.scoreboard tr:hover {
+    background-color: #2d1b69; /* Dark purple hover effect */
+    color: #fff;
+}
+
+/* Highlighting 12th Place Row */
+table.scoreboard tr:nth-child(12) {
+    background-color: #550055; /* Highlight color for rank 12 */
+    color: #fff;
+}
+
+/* Styling for Placeholder Rows */
+.placeholder-row {
+    background-color: #555555; /* Gray background for placeholders */
+    color: #aaa; /* Lighter text for placeholders */
+}
+
+/* Styling for Empty Teams */
+table.scoreboard td.empty-team {
+    background-color: #333333; /* Dark background for empty teams */
+    color: #777; /* Lighter text for empty rows */
+}
+
+/* Add Glow Effect for Rank 1 */
+table.scoreboard tr:nth-child(1) {
+    box-shadow: 0 0 10px #39FF14; /* Neon glow effect for rank 1 */
+}

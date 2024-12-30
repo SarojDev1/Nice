@@ -15,7 +15,7 @@ body {
 /* Container */
 .container {
     width: 400px; /* Set width to 400px */
-    height: 1280px; /* Set height to 1280px */
+    height: 500px; /* Set height to 500px */
     background-color: #000; /* Pure black background for esports */
     padding: 0;
     text-align: center;
@@ -77,37 +77,20 @@ table.scoreboard td:nth-child(2) {
     padding-left: 8px; /* Align text inside cell */
 }
 
-/* Alive Column */
-table.scoreboard td:nth-child(3) {
-    background-color: #d7a7f1; /* Light purple */
-    color: #000; /* Black text */
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Points (PTS) Column */
-table.scoreboard td:nth-child(4) {
-    background-color: #d7a7f1; /* Light purple */
-    color: #000; /* Black text */
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Kills Column */
+/* Hide all columns except Team Name */
+table.scoreboard td:nth-child(3),
+table.scoreboard td:nth-child(4),
 table.scoreboard td:nth-child(5) {
-    background-color: #d7a7f1; /* Light purple */
-    color: #000; /* Black text */
-    text-align: center;
-    font-weight: bold;
+    display: none; /* Hide the columns for Alive, Points, Kills */
 }
 
 /* Row Height (Adjust for 12 rows) */
 table.scoreboard tr {
-    height: 106.67px; /* Adjust row height to fit 12 rows in 1280px */
+    height: 41.67px; /* Adjust row height to fit 12 rows in 500px */
     border: none; /* Remove any extra spacing */
 }
 
-/* Green Bar for Alive Column */
+/* Green Bar for Alive Column (Hidden, but kept for structure) */
 .alive-line {
     display: inline-block;
     width: 100%; /* Dynamic width handled in JS */

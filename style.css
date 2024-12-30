@@ -59,66 +59,54 @@ table.scoreboard th {
 /* Table Data Rows */
 table.scoreboard td {
     padding: 12px;
-    background-color: #333; /* Slightly lighter dark rows */
-    color: #bbb;
-    border-bottom: 1px solid #444;
-}
-
-/* Rank Color */
-table.scoreboard td.rank {
-    background-color:  #ffdf00; /* Light yellow for rank */
-    color: black; /* Set text color to black */
-}
-
-/* Team Name Color */
-table.scoreboard td.team-name {
-    background-color:  #ffdf00; /* Light grey for team name */
-    color: black; /* Set text color to black */
-}
-
-/* Alive, Points, Kills Color */
-table.scoreboard td.alive,
-table.scoreboard td.points,
-table.scoreboard td.kills {
-    background-color: #d7a7f1; /* Light purple for alive, points, kills */
-    color: black; /* Set text color to black */
-}
-
-/* Top 12 Ranks */
-table.scoreboard tr:nth-child(1) td,
-table.scoreboard tr:nth-child(2) td,
-table.scoreboard tr:nth-child(3) td,
-table.scoreboard tr:nth-child(4) td,
-table.scoreboard tr:nth-child(5) td,
-table.scoreboard tr:nth-child(6) td,
-table.scoreboard tr:nth-child(7) td,
-table.scoreboard tr:nth-child(8) td,
-table.scoreboard tr:nth-child(9) td,
-table.scoreboard tr:nth-child(10) td,
-table.scoreboard tr:nth-child(11) td,
-table.scoreboard tr:nth-child(12) td {
-    background-color: #ffdf00; /* Gold, Silver, and Bronze for top 12 */
-    color: #222;
+    color: #000; /* Black text for better readability */
     font-weight: bold;
 }
 
-/* Wipeout Text Style */
+/* Rank Column (#) */
+table.scoreboard td:nth-child(1) {
+    background-color: #f1e15b; /* Light yellow */
+}
+
+/* Team Name Column */
+table.scoreboard td:nth-child(2) {
+    background-color: #ffffff; /* White */
+    color: #000; /* Black text */
+}
+
+/* Alive Column */
+table.scoreboard td:nth-child(3) {
+    background-color: #d7a7f1; /* Light purple */
+    color: #000; /* Black text */
+}
+
+/* Points (PTS) Column */
+table.scoreboard td:nth-child(4) {
+    background-color: #d7a7f1; /* Light purple */
+    color: #000; /* Black text */
+}
+
+/* Kills Column */
+table.scoreboard td:nth-child(5) {
+    background-color: #d7a7f1; /* Light purple */
+    color: #000; /* Black text */
+}
+
+/* Hover Effect on Rows */
+table.scoreboard tr:hover {
+    background-color: #39FF14; /* Neon green hover effect */
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Wipeout Text */
 .wipeout {
     color: red;
     font-weight: bold;
     text-transform: uppercase;
     background-color: #550000; /* Dark red background for wipeout */
-    text-align: center; /* Align text to center */
-}
-
-/* Align 'Wipeout' to center */
-.wipeout td {
     text-align: center;
-}
-
-/* Table Bottom Border */
-table.scoreboard tr:last-child td {
-    border-bottom: none;
 }
 
 /* Green Line for Alive column */
@@ -130,15 +118,16 @@ table.scoreboard tr:last-child td {
     margin-top: 4px;
 }
 
-/* Responsive design for smaller screens */
+/* Responsive Design for Smaller Screens */
 @media (max-width: 600px) {
-    table.scoreboard th, table.scoreboard td {
-        padding: 8px; /* Smaller padding for smaller screens */
-        font-size: 0.9rem; /* Adjust font size */
+    table.scoreboard th,
+    table.scoreboard td {
+        padding: 8px;
+        font-size: 0.9rem;
     }
 
     .title {
-        font-size: 1.5rem; /* Smaller title on mobile */
+        font-size: 1.5rem;
     }
 
     .container {

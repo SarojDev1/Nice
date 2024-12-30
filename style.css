@@ -20,7 +20,7 @@ body {
     padding: 0;
     text-align: center;
     position: relative;
-    overflow-y: auto; /* Allow scrolling if the content overflows */
+    overflow: hidden; /* Prevent scrolling */
 }
 
 /* Title */
@@ -101,9 +101,9 @@ table.scoreboard td:nth-child(5) {
     font-weight: bold;
 }
 
-/* Row Height */
+/* Row Height (Adjust for 12 rows) */
 table.scoreboard tr {
-    height: 30px; /* Consistent row height */
+    height: 41.67px; /* Adjust row height to fit 12 rows in 500px */
     border: none; /* Remove any extra spacing */
 }
 

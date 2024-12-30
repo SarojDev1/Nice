@@ -39,25 +39,26 @@ table.scoreboard {
     width: 100%;
     border-collapse: collapse; /* Remove gaps between table elements */
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
     border: 1px solid #333; /* Dark border for definition */
+    table-layout: fixed; /* Prevents columns from expanding */
 }
 
 /* Table Header */
 table.scoreboard th {
-    padding: 10px;
+    padding: 8px 4px; /* Reduced padding */
     background-color: #2d1b69; /* Dark purple background for headers */
     color: #39FF14; /* Neon green header text */
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Smaller font size for headers */
 }
 
 /* Table Rows */
 table.scoreboard td {
-    padding: 12px 8px; /* More padding for readability */
+    padding: 8px 4px; /* Reduced padding for tighter space */
     color: #ffffff; /* White text */
     font-weight: bold;
     border-bottom: 1px solid #444; /* Subtle border between rows */
@@ -67,7 +68,7 @@ table.scoreboard td {
 table.scoreboard td:nth-child(1) {
     background-color: #f1e15b; /* Light yellow */
     color: #000; /* Black text */
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 /* Team Name Column */
@@ -102,7 +103,7 @@ table.scoreboard td:nth-child(5) {
 
 /* Row Height */
 table.scoreboard tr {
-    height: 40px; /* Adjusted row height for better visibility */
+    height: 35px; /* Adjusted row height for better visibility */
     border: none;
 }
 
@@ -110,8 +111,8 @@ table.scoreboard tr {
 .alive-line {
     display: inline-block;
     width: 100%; /* Dynamic width handled in JS */
-    max-width: 80px; /* Max bar width for alive */
-    height: 10px;
+    max-width: 60px; /* Reduced max width for alive */
+    height: 8px; /* Smaller height */
     background-color: #39FF14; /* Neon green for alive bars */
     border-radius: 5px;
     margin: auto;
@@ -131,8 +132,8 @@ table.scoreboard tr {
 @media (max-width: 600px) {
     table.scoreboard th,
     table.scoreboard td {
-        padding: 8px;
-        font-size: 0.9rem;
+        padding: 6px 2px; /* Even less padding on small screens */
+        font-size: 0.8rem; /* Smaller font size on small screens */
     }
 
     .title {

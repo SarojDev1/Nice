@@ -14,95 +14,103 @@ body {
 
 /* Container */
 .container {
-    width: 203px; /* Set width */
-    height: 435px; /* Set height */
+    width: 100%;
+    max-width: 600px; /* Adjust width for a compact layout */
     background-color: #000; /* Pure black background for esports */
-    padding: 10px;
+    padding: 0;
     text-align: center;
     position: relative;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Add shadow for depth */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: hidden; /* Prevent scroll */
 }
 
 /* Title */
 .title {
-    font-size: 1.2rem; /* Slightly smaller title for the compact design */
+    font-size: 1.2rem; /* Adjusted size for compactness */
     color: #39FF14; /* Neon green text */
-    margin-bottom: 10px;
+    margin: 5px 0;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 /* Table Styles */
 table.scoreboard {
     width: 100%;
-    height: 100%;
     border-collapse: collapse; /* Remove gaps between table elements */
     margin: 0;
     font-size: 0.9rem;
     text-align: center;
-    border: 1px solid #333; /* Dark border for definition */
+    border: none;
 }
 
 /* Table Header */
 table.scoreboard th {
-    padding: 5px;
-    background-color: #2d1b69; /* Dark purple background for headers */
+    padding: 6px;
+    background-color: #222; /* Dark background for headers */
     color: #39FF14; /* Neon green header text */
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-size: 0.8rem;
 }
 
 /* Table Rows */
 table.scoreboard td {
-    padding: 5px;
+    padding: 0; /* Remove all padding for compact layout */
     color: #ffffff; /* White text */
     font-weight: bold;
-    border-bottom: 1px solid #444; /* Subtle border between rows */
+    border: none; /* Remove borders for seamless look */
+}
+
+/* Rank Column (#) */
+table.scoreboard td:nth-child(1) {
+    background-color: #f1e15b; /* Light yellow */
+    color: #000; /* Black text */
 }
 
 /* Team Name Column */
-table.scoreboard td:nth-child(1) {
+table.scoreboard td:nth-child(2) {
     background-color: #ffffff; /* White */
     color: #000; /* Black text */
     text-align: left;
-    padding-left: 10px; /* Align text inside cell */
+    padding-left: 8px; /* Align text inside cell */
 }
 
 /* Alive Column */
-table.scoreboard td:nth-child(2) {
-    background-color: #d7a7f1; /* Light purple */
-    color: #000; /* Black text */
-    font-weight: bold;
-    padding: 0;
-}
-
-/* Points (PTS) Column */
 table.scoreboard td:nth-child(3) {
     background-color: #d7a7f1; /* Light purple */
     color: #000; /* Black text */
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Points (PTS) Column */
+table.scoreboard td:nth-child(4) {
+    background-color: #d7a7f1; /* Light purple */
+    color: #000; /* Black text */
+    text-align: center;
     font-weight: bold;
 }
 
 /* Kills Column */
-table.scoreboard td:nth-child(4) {
+table.scoreboard td:nth-child(5) {
     background-color: #d7a7f1; /* Light purple */
     color: #000; /* Black text */
+    text-align: center;
     font-weight: bold;
+}
+
+/* Row Height */
+table.scoreboard tr {
+    height: 30px; /* Consistent row height */
+    border: none; /* Remove any extra spacing */
 }
 
 /* Green Bar for Alive Column */
 .alive-line {
     display: inline-block;
     width: 100%; /* Dynamic width handled in JS */
-    max-width: 60px; /* Max width for alive */
-    height: 8px;
+    max-width: 80px; /* Max bar width for alive */
+    height: 10px;
     background-color: #39FF14; /* Neon green for alive bars */
     border-radius: 5px;
     margin: auto;
@@ -122,7 +130,7 @@ table.scoreboard td:nth-child(4) {
 @media (max-width: 600px) {
     table.scoreboard th,
     table.scoreboard td {
-        padding: 5px;
+        padding: 0;
         font-size: 0.8rem;
     }
 
@@ -132,6 +140,5 @@ table.scoreboard td:nth-child(4) {
 
     .container {
         width: 90%;
-        height: 435px; /* Retain height for smaller screens */
     }
 }

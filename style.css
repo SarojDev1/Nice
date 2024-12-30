@@ -15,50 +15,49 @@ body {
 /* Container */
 .container {
     width: 100%;
-    max-width: 900px;
+    max-width: 800px; /* Adjusted for a compact layout */
     background-color: #1c1c1c; /* Slightly lighter dark background */
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 30px rgba(0, 255, 0, 0.5); /* Green glow effect for esports */
+    padding: 15px; /* Reduced padding for compactness */
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4); /* Subtle glow for esports theme */
     text-align: center;
     position: relative;
 }
 
 /* Title */
 .title {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Adjusted for compact layout */
     color: #39FF14; /* Neon green text */
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Reduced margin */
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px; /* Slightly tighter spacing */
 }
 
 /* Table Styles */
 table.scoreboard {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 1rem;
+    font-size: 0.95rem; /* Slightly smaller for compactness */
     text-align: center;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 255, 0, 0.5); /* Neon green glow */
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4); /* Subtle green glow */
 }
 
 /* Table Header */
 table.scoreboard th {
-    padding: 12px;
+    padding: 10px;
     background-color: #222; /* Dark background for headers */
     color: #39FF14; /* Neon green header text */
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px; /* Tighter spacing for compactness */
 }
 
 /* Table Data Rows */
 table.scoreboard td {
-    padding: 12px;
+    padding: 10px; /* Adjusted padding for compactness */
     color: #000; /* Black text for better readability */
     font-weight: bold;
 }
@@ -118,20 +117,25 @@ table.scoreboard tr:hover {
     margin-top: 4px;
 }
 
+/* Table Bottom Border */
+table.scoreboard tr:last-child td {
+    border-bottom: none;
+}
+
 /* Responsive Design for Smaller Screens */
 @media (max-width: 600px) {
     table.scoreboard th,
     table.scoreboard td {
-        padding: 8px;
-        font-size: 0.9rem;
+        padding: 6px; /* Smaller padding for smaller screens */
+        font-size: 0.8rem; /* Adjusted font size */
     }
 
     .title {
-        font-size: 1.5rem;
+        font-size: 1.3rem; /* Smaller title on mobile */
     }
 
     .container {
-        width: 90%;
-        padding: 15px;
+        width: 95%;
+        padding: 10px; /* Reduced padding for small screens */
     }
 }

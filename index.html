@@ -11,7 +11,8 @@
         <h1 class="title">E-NEPAL GAMES</h1>
         <table class="scoreboard">
             <thead>
-                <tr>
+                <tr id="scoreboard-header">
+                    <!-- Dynamic Header Rows -->
                     <th>#</th>
                     <th>TEAM NAME</th>
                     <th>ALIVE</th>
@@ -20,9 +21,12 @@
                 </tr>
             </thead>
             <tbody id="scoreboard-body">
-                <!-- Rows will be dynamically generated here -->
+                <!-- Dynamic Rows will be inserted here -->
             </tbody>
         </table>
+        <div id="error-message" style="display: none; color: red; text-align: center; margin-top: 20px;">
+            Error loading leaderboard data. Please try again later.
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

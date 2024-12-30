@@ -14,15 +14,8 @@ async function fetchScoreboardData() {
             throw new Error("No data available");
         }
 
-        const scoreboardHeader = document.getElementById('scoreboard-header');
         const scoreboardBody = document.getElementById('scoreboard-body');
         scoreboardBody.innerHTML = ''; // Clear previous data
-
-        // Display header row dynamically (Row 1 in Google Sheets)
-        const headerRow = data.values[0]; // First row contains column titles
-        scoreboardHeader.innerHTML = headerRow
-            .map((header) => `<th>${header}</th>`)
-            .join('');
 
         // Parse rows from row 2 to row 12
         const parsedData = data.values.slice(1).map((row, index) => ({
@@ -60,11 +53,11 @@ async function fetchScoreboardData() {
                     : `<td class="alive"><div class="alive-line" style="width: ${row.alive * 20}px;"></div></td>`;
 
             rowElement.innerHTML = `
-                <td>${index + 1}</td>
-                <td>${row.teamName}</td>
+                <td class="rank">${index + 1}</td>
+                <td class="team-name">${row.teamName}</td>
                 ${aliveContent}
-                <td>${row.points}</td>
-                <td>${row.kills}</td>
+                <td class="points">${row.points}</td>
+                <td class="kills">${row.kills}</td>
             `;
 
             // Highlight 12th row
@@ -77,7 +70,12 @@ async function fetchScoreboardData() {
         });
     } catch (error) {
         console.error("Error fetching scoreboard data:", error);
-        document.getElementById('error-message').style.display = 'block';
+        const errorElement = document.createElement('div');
+        errorElement.id = 'error-message';
+        errorElement.style.color = 'red';
+        errorElement.style.textAlign = 'center';
+        errorElement.textContent = 'Error loading scoreboard data. Please try again later.';
+        document.body.appendChild(errorElement);
     }
 }
 

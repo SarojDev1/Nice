@@ -1,6 +1,6 @@
 // Google Sheets API URL
 const sheetId = '141Ea_xHBXPi6rItn07EiJMrUjVU7m9AFP8HFJi-Dm8I';
-const range = 'Sheet1!A2:E13'; // Range of cells to get
+const range = 'Sheet1!A1:E13'; // Include header row and rows up to 12
 const apiKey = 'AIzaSyAhytWe5enZPUd0hiiIrAN8ZbhpO4nbcrs'; // Your API Key
 
 const leaderboardUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
@@ -14,35 +14,65 @@ async function fetchScoreboardData() {
             throw new Error("No data available");
         }
 
+        const scoreboardHeader = document.getElementById('scoreboard-header');
         const scoreboardBody = document.getElementById('scoreboard-body');
         scoreboardBody.innerHTML = ''; // Clear previous data
 
-        data.values.slice(0, 11).forEach((row, index) => { // Only take the first 11 rows
-            if (row.length < 5) return;
+        // Display header row dynamically (Row 1 in Google Sheets)
+        const headerRow = data.values[0]; // First row contains column titles
+        scoreboardHeader.innerHTML = headerRow
+            .map((header) => `<th>${header}</th>`)
+            .join('');
 
+        // Parse rows from row 2 to row 12
+        const parsedData = data.values.slice(1).map((row, index) => ({
+            rank: index + 1,
+            teamName: row[1] || "Unknown", // Default to "Unknown" if no team name
+            alive: parseInt(row[2] || 0), // Default to 0 if alive is missing
+            points: parseInt(row[3] || 0), // Default to 0 if points are missing
+            kills: parseInt(row[4] || 0), // Default to 0 if kills are missing
+        }));
+
+        // Separate teams with alive = 0
+        const wipeoutTeams = parsedData.filter((team) => team.alive === 0);
+        const activeTeams = parsedData.filter((team) => team.alive > 0);
+
+        // Sort active teams and then append wipeout teams
+        const sortedData = [...activeTeams, ...wipeoutTeams];
+
+        // Ensure there are always 12 rows (add placeholders if needed)
+        while (sortedData.length < 12) {
+            sortedData.push({
+                rank: sortedData.length + 1,
+                teamName: "Placeholder Team",
+                alive: 0,
+                points: 0,
+                kills: 0,
+            });
+        }
+
+        // Generate rows dynamically
+        sortedData.forEach((row, index) => {
             const rowElement = document.createElement('tr');
-            const alive = row[2]; // Alive value
-
-            let aliveContent = '';
-            if (alive == 4) {
-                aliveContent = `<div class="alive-line" style="height: 4px;"></div>`;
-            } else if (alive == 3) {
-                aliveContent = `<div class="alive-line" style="height: 3px;"></div>`;
-            } else if (alive == 2) {
-                aliveContent = `<div class="alive-line" style="height: 2px;"></div>`;
-            } else if (alive == 1) {
-                aliveContent = `<div class="alive-line" style="height: 1px;"></div>`;
-            } else if (alive == 0) {
-                aliveContent = 'Wipeout';
-            }
+            const aliveContent =
+                row.alive === 0
+                    ? `<td class="alive wipeout">Wipeout</td>`
+                    : `<td class="alive"><div class="alive-line" style="width: ${row.alive * 20}px;"></div></td>`;
 
             rowElement.innerHTML = `
                 <td>${index + 1}</td>
-                <td>${row[1]}</td> <!-- Team Name -->
-                <td>${aliveContent}</td> <!-- Alive (green line or wipeout) -->
-                <td>${row[3]}</td> <!-- Points -->
-                <td>${row[4]}</td> <!-- Kills -->
+                <td>${row.teamName}</td>
+                ${aliveContent}
+                <td>${row.points}</td>
+                <td>${row.kills}</td>
             `;
+
+            // Highlight 12th row
+            if (index + 1 === 12) {
+                rowElement.style.backgroundColor = "#550055"; // Highlight color for rank 12
+                rowElement.style.color = "#fff";
+            }
+
             scoreboardBody.appendChild(rowElement);
         });
     } catch (error) {
@@ -51,91 +81,5 @@ async function fetchScoreboardData() {
     }
 }
 
-// Fetch data when page loads
+// Fetch data when the page loads
 window.onload = fetchScoreboardData;
-// Ensure you have 12 rows in your data array
-const data = [
-    { rank: 1, teamName: "Team 1", alive: 4, points: 30, kills: 5 },
-    { rank: 2, teamName: "Team 2", alive: 3, points: 60, kills: 6 },
-    { rank: 3, teamName: "Team 3", alive: 2, points: 55, kills: 5 },
-    { rank: 4, teamName: "Team 4", alive: 1, points: 40, kills: 4 },
-    { rank: 5, teamName: "Team 5", alive: 0, points: 20, kills: 3 },
-    { rank: 6, teamName: "Team 6", alive: 3, points: 50, kills: 4 },
-    { rank: 7, teamName: "Team 7", alive: 4, points: 45, kills: 5 },
-    { rank: 8, teamName: "Team 8", alive: 0, points: 10, kills: 1 },
-    { rank: 9, teamName: "Team 9", alive: 2, points: 35, kills: 2 },
-    { rank: 10, teamName: "Team 10", alive: 1, points: 25, kills: 3 },
-    { rank: 11, teamName: "Team 11", alive: 4, points: 65, kills: 6 },
-    { rank: 12, teamName: "Team 12", alive: 5, points: 5, kills: 9 },
-];
-
-// Generate the table rows dynamically
-const tableBody = document.getElementById("scoreboard-body");
-tableBody.innerHTML = ""; // Clear existing rows
-
-data.forEach((row) => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-        <td class="rank">${row.rank}</td>
-        <td class="team-name">${row.teamName}</td>
-        <td class="alive"><div class="alive-line" style="width: ${row.alive * 20}px;"></div></td>
-        <td class="points">${row.points}</td>
-        <td class="kills">${row.kills}</td>
-    `;
-    tableBody.appendChild(tr);
-});
-// Example data fetched from the sheet or generated manually
-const data = [
-    { rank: 1, teamName: "Team 1", alive: 4, points: 30, kills: 5 },
-    { rank: 2, teamName: "Team 2", alive: 3, points: 60, kills: 6 },
-    { rank: 3, teamName: "Team 3", alive: 2, points: 55, kills: 5 },
-    { rank: 4, teamName: "Team 4", alive: 1, points: 40, kills: 4 },
-    { rank: 5, teamName: "Team 5", alive: 0, points: 20, kills: 3 }, // Wipeout
-    { rank: 6, teamName: "Team 6", alive: 3, points: 50, kills: 4 },
-    { rank: 7, teamName: "Team 7", alive: 4, points: 45, kills: 5 },
-    { rank: 8, teamName: "Team 8", alive: 0, points: 10, kills: 1 }, // Wipeout
-    { rank: 9, teamName: "Team 9", alive: 2, points: 35, kills: 2 },
-    { rank: 10, teamName: "Team 10", alive: 1, points: 25, kills: 3 },
-    { rank: 11, teamName: "Team 11", alive: 4, points: 65, kills: 6 },
-    { rank: 12, teamName: "Team 12", alive: 0, points: 5, kills: 0 }, // Wipeout
-];
-
-// Generate and sort the table rows dynamically
-function generateTable(data) {
-    const tableBody = document.getElementById("scoreboard-body");
-    tableBody.innerHTML = ""; // Clear existing rows
-
-    // Separate wipeout teams (alive = 0) and other teams
-    const wipeoutTeams = data.filter((team) => team.alive === 0);
-    const activeTeams = data.filter((team) => team.alive > 0);
-
-    // Combine active teams followed by wipeout teams
-    const sortedData = [...activeTeams, ...wipeoutTeams];
-
-    // Generate rows
-    sortedData.forEach((row, index) => {
-        const tr = document.createElement("tr");
-
-        // Apply Wipeout style if alive = 0
-        const aliveContent =
-            row.alive === 0
-                ? `<td class="alive wipeout" colspan="1">Wipeout</td>`
-                : `<td class="alive"><div class="alive-line" style="width: ${row.alive * 20}px;"></div></td>`;
-
-        // Create table row
-        tr.innerHTML = `
-            <td class="rank">${index + 1}</td>
-            <td class="team-name">${row.teamName}</td>
-            ${aliveContent}
-            <td class="points">${row.points}</td>
-            <td class="kills">${row.kills}</td>
-        `;
-
-        // Append to table
-        tableBody.appendChild(tr);
-    });
-}
-
-// Call the function to generate the table
-generateTable(data);
-

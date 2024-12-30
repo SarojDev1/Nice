@@ -49,8 +49,8 @@ table.scoreboard {
 /* Table Header */
 table.scoreboard th {
     padding: 12px;
-    background-color: #222; /* Dark background for headers */
-    color: #39FF14; /* Neon green header text */
+    background-color:  #ffdf00; /* Dark background for headers */
+    color: #ffdf00; /* Neon green header text */
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -59,20 +59,20 @@ table.scoreboard th {
 /* Table Data Rows */
 table.scoreboard td {
     padding: 12px;
-    background-color: #333; /* Slightly lighter dark rows */
+    background-color:  #ffdf00; /* Slightly lighter dark rows */
     color: #bbb;
     border-bottom: 1px solid #444;
 }
 
 /* Rank Color */
 table.scoreboard td.rank {
-    background-color: #f1e15b; /* Light yellow for rank */
+    background-color:  #ffdf00; /* Light yellow for rank */
     color: black; /* Set text color to black */
 }
 
 /* Team Name Color */
 table.scoreboard td.team-name {
-    background-color: #d3d3d3; /* Light grey for team name */
+    background-color:  #ffdf00; /* Light grey for team name */
     color: black; /* Set text color to black */
 }
 
@@ -97,7 +97,7 @@ table.scoreboard tr:nth-child(9) td,
 table.scoreboard tr:nth-child(10) td,
 table.scoreboard tr:nth-child(11) td,
 table.scoreboard tr:nth-child(12) td {
-    background-color: #ffdf00; /* Gold, Silver, and Bronze for top 3 */
+    background-color: #ffdf00; /* Gold, Silver, and Bronze for top 12 */
     color: #222;
     font-weight: bold;
 }

@@ -1,6 +1,6 @@
 // Google Sheets API URL
-const sheetId = '141Ea_xHBXPi6rItn07EiJMrUjVU7m9AFP8HFJi-Dm8I';
-const range = 'Sheet1!A1:E13'; // Include header row and rows up to 12
+const sheetId = '141Ea_xHBXPi6rItn07EiJMrUjVU7m9AFP8HFJi-Dm8I'; // Your sheet ID
+const range = 'Sheet1!A1:E13'; // The range to fetch (adjust as needed)
 const apiKey = 'AIzaSyAhytWe5enZPUd0hiiIrAN8ZbhpO4nbcrs'; // Your API Key
 
 const leaderboardUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
@@ -21,6 +21,7 @@ async function fetchScoreboardData() {
         const parsedData = data.values.slice(1).map((row, index) => ({
             rank: index + 1,
             teamName: row[1] || "Unknown", // Default to "Unknown" if no team name
+            abbreviation: row[0] || "N/A", // Default to "N/A" if no abbreviation
             alive: parseInt(row[2] || 0), // Default to 0 if alive is missing
             points: parseInt(row[3] || 0), // Default to 0 if points are missing
             kills: parseInt(row[4] || 0), // Default to 0 if kills are missing
@@ -38,6 +39,7 @@ async function fetchScoreboardData() {
             sortedData.push({
                 rank: sortedData.length + 1,
                 teamName: "Placeholder Team",
+                abbreviation: "N/A",
                 alive: 0,
                 points: 0,
                 kills: 0,
@@ -53,15 +55,15 @@ async function fetchScoreboardData() {
                     : `<td class="alive"><div class="alive-line" style="width: ${row.alive * 20}px;"></div></td>`;
 
             rowElement.innerHTML = `
-                <td class="rank">${index + 1}</td>
-                <td class="team-name">${row.teamName}</td>
+                <td class="rank">${row.rank}</td>
+                <td class="team-name">${row.teamName} (${row.abbreviation})</td>
                 ${aliveContent}
                 <td class="points">${row.points}</td>
                 <td class="kills">${row.kills}</td>
             `;
 
             // Highlight 12th row
-            if (index + 1 === 12) {
+            if (row.rank === 12) {
                 rowElement.style.backgroundColor = "#550055"; // Highlight color for rank 12
                 rowElement.style.color = "#fff";
             }

@@ -49,8 +49,8 @@ table.scoreboard {
 /* Table Header */
 table.scoreboard th {
     padding: 12px;
-    background-color:  #ffdf00; /* Dark background for headers */
-    color: #ffdf00; /* Neon green header text */
+    background-color: #222; /* Dark background for headers */
+    color: #39FF14; /* Neon green header text */
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;

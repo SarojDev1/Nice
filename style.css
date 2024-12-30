@@ -15,7 +15,7 @@ body {
 /* Container */
 .container {
     width: 400px; /* Set width to 400px */
-    height: 500px; /* Set height to 500px */
+    height: 700px; /* Set height to 700px */
     background-color: #000; /* Pure black background for esports */
     padding: 0;
     text-align: center;
@@ -103,7 +103,7 @@ table.scoreboard td:nth-child(5) {
 
 /* Row Height (Adjust for 12 rows) */
 table.scoreboard tr {
-    height: 41.67px; /* Adjust row height to fit 12 rows in 500px */
+    height: 58.33px; /* Adjust row height to fit 12 rows in 700px */
     border: none; /* Remove any extra spacing */
 }
 

@@ -14,8 +14,7 @@ body {
 
 /* Container */
 .container {
-    width: 100%;
-    max-width: 203px; /* Set max width */
+    width: 203px; /* Set width */
     height: 435px; /* Set height */
     background-color: #000; /* Pure black background for esports */
     padding: 10px;
@@ -23,7 +22,10 @@ body {
     position: relative;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Add shadow for depth */
-    overflow-y: auto; /* Allow vertical scrolling */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden; /* Prevent scroll */
 }
 
 /* Title */

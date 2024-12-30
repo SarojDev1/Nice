@@ -14,8 +14,8 @@ body {
 
 /* Container */
 .container {
-    width: 205px; /* Set width to 205px */
-    height: 445px; /* Set height to 445px */
+    width: 400px; /* Set width to 400px */
+    height: 500px; /* Set height to 500px */
     background-color: #000; /* Pure black background for esports */
     padding: 0;
     text-align: center;

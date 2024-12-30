@@ -59,7 +59,7 @@ table.scoreboard th {
 /* Table Data Rows */
 table.scoreboard td {
     padding: 12px;
-    background-color:  #ffdf00; /* Slightly lighter dark rows */
+    background-color: #333; /* Slightly lighter dark rows */
     color: #bbb;
     border-bottom: 1px solid #444;
 }

@@ -84,10 +84,19 @@ table.scoreboard td.kills {
     color: black; /* Set text color to black */
 }
 
-/* Top 3 Ranks */
+/* Top 12 Ranks */
 table.scoreboard tr:nth-child(1) td,
 table.scoreboard tr:nth-child(2) td,
-table.scoreboard tr:nth-child(3) td {
+table.scoreboard tr:nth-child(3) td,
+table.scoreboard tr:nth-child(4) td,
+table.scoreboard tr:nth-child(5) td,
+table.scoreboard tr:nth-child(6) td,
+table.scoreboard tr:nth-child(7) td,
+table.scoreboard tr:nth-child(8) td,
+table.scoreboard tr:nth-child(9) td,
+table.scoreboard tr:nth-child(10) td,
+table.scoreboard tr:nth-child(11) td,
+table.scoreboard tr:nth-child(12) td {
     background-color: #ffdf00; /* Gold, Silver, and Bronze for top 3 */
     color: #222;
     font-weight: bold;

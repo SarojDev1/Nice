@@ -69,7 +69,7 @@ table.scoreboard td:nth-child(1) {
 
 /* Team Name Column */
 table.scoreboard td:nth-child(2) {
-    width: 50%; /* Larger width for team name */
+    width: 40%; /* Adjusted width for team name */
     background-color: #ffffff; /* White */
     color: #000; /* Black text */
     text-align: left;
@@ -144,5 +144,10 @@ table.scoreboard tr {
 
     .container {
         width: 95%; /* Adjust width for smaller screens */
+    }
+
+    /* Make Team Name even more compact on small screens */
+    table.scoreboard td:nth-child(2) {
+        width: 35%; /* Further reduce width for team name */
     }
 }

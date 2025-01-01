@@ -24,12 +24,12 @@ body {
 
 /* Title */
 .title {
-    font-size: 1.2rem; /* Adjusted size for compactness */
+    font-size: 1rem; /* Adjusted size for compactness */
     color: #39FF14; /* Neon green text */
     margin: 5px 0;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 /* Table Styles */
@@ -37,25 +37,24 @@ table.scoreboard {
     width: 100%;
     border-collapse: collapse; /* Remove gaps between table elements */
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 0.8rem; /* Adjusted for compactness */
     text-align: center;
     border: none;
 }
 
 /* Table Header */
 table.scoreboard th {
-    padding: 6px 0; /* No vertical gaps in headers */
+    padding: 4px; /* Compact header padding */
     background-color: #222; /* Dark background for headers */
     color: #39FF14; /* Neon green header text */
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 1px;
     font-size: 0.8rem;
 }
 
 /* Table Rows */
 table.scoreboard td {
-    padding: 0; /* Remove all padding for compact layout */
+    padding: 2px; /* Reduce padding for compact rows */
     color: #ffffff; /* White text */
     font-weight: bold;
     border: none; /* Remove borders for seamless look */
@@ -63,20 +62,23 @@ table.scoreboard td {
 
 /* Rank Column (#) */
 table.scoreboard td:nth-child(1) {
+    width: 10%; /* Small width for rank column */
     background-color: #f1e15b; /* Light yellow */
     color: #000; /* Black text */
 }
 
 /* Team Name Column */
 table.scoreboard td:nth-child(2) {
+    width: 50%; /* Larger width for team name */
     background-color: #ffffff; /* White */
     color: #000; /* Black text */
     text-align: left;
-    padding-left: 8px; /* Align text inside cell */
+    padding-left: 5px; /* Align text inside cell */
 }
 
 /* Alive Column */
 table.scoreboard td:nth-child(3) {
+    width: 10%; /* Narrow column for alive */
     background-color: #d7a7f1; /* Light purple */
     color: #000; /* Black text */
     text-align: center;
@@ -85,6 +87,7 @@ table.scoreboard td:nth-child(3) {
 
 /* Points (PTS) Column */
 table.scoreboard td:nth-child(4) {
+    width: 15%; /* Adjusted width for points */
     background-color: #d7a7f1; /* Light purple */
     color: #000; /* Black text */
     text-align: center;
@@ -93,6 +96,7 @@ table.scoreboard td:nth-child(4) {
 
 /* Kills Column */
 table.scoreboard td:nth-child(5) {
+    width: 15%; /* Adjusted width for kills */
     background-color: #d7a7f1; /* Light purple */
     color: #000; /* Black text */
     text-align: center;
@@ -101,18 +105,17 @@ table.scoreboard td:nth-child(5) {
 
 /* Row Height */
 table.scoreboard tr {
-    height: 30px; /* Consistent row height */
-    border: none; /* Remove any extra spacing */
+    height: 25px; /* Reduced row height for compactness */
 }
 
 /* Green Bar for Alive Column */
 .alive-line {
     display: inline-block;
     width: 100%; /* Dynamic width handled in JS */
-    max-width: 80px; /* Max bar width for alive */
-    height: 10px;
+    max-width: 60px; /* Compact bar for alive */
+    height: 8px;
     background-color: #39FF14; /* Neon green for alive bars */
-    border-radius: 5px;
+    border-radius: 4px;
     margin: auto;
 }
 
@@ -123,22 +126,23 @@ table.scoreboard tr {
     text-transform: uppercase;
     background-color: #550000; /* Dark red background for wipeout */
     text-align: center;
-    padding: 5px 0;
+    padding: 3px 0;
+    font-size: 0.7rem;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
     table.scoreboard th,
     table.scoreboard td {
-        padding: 0;
-        font-size: 0.8rem;
+        font-size: 0.7rem; /* Smaller font size for responsiveness */
+        padding: 2px;
     }
 
     .title {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .container {
-        width: 90%;
+        width: 95%; /* Adjust width for smaller screens */
     }
 }

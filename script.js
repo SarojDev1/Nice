@@ -1,6 +1,6 @@
 // Google Sheets API URL
 const sheetId = '141Ea_xHBXPi6rItn07EiJMrUjVU7m9AFP8HFJi-Dm8I';
-const range = 'Sheet1!A1:E13'; // Include header row and rows up to 12
+const range = 'Live tracker!A1:E13'; // Include header row and rows up to 12
 const apiKey = 'AIzaSyAhytWe5enZPUd0hiiIrAN8ZbhpO4nbcrs'; // Your API Key
 
 const leaderboardUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;

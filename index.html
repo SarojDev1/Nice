@@ -1,33 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIVE TRACKER</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Matrix Bot — Premium</title>
+  <meta name="description" content="Premium features, pricing and installation guide for Matrix Bot." />
+  <style>
+    :root{
+      --bg:#0b0f14; --card:#0f1720; --muted:#9aa6b2; --accent:#00f0ff; --accent-2:#7b61ff; --glass: rgba(255,255,255,0.04);
+      --radius:14px; --max:1100px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; background:linear-gradient(180deg,#080a0d 0%, #071021 100%); color:#e6eef6; -webkit-font-smoothing:antialiased;}
+    .container{max-width:var(--max); margin:36px auto; padding:32px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-weight:700;color:#041018}
+    h1{font-size:20px;margin:0}
+    .tag{color:var(--muted);font-size:13px}
+
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:32px;margin-top:28px;align-items:center}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:28px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6);}
+
+    .headline{font-size:42px;line-height:1.02;margin:0 0 12px}
+    .lead{color:var(--muted);font-size:16px;margin-bottom:20px}
+
+    .features{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .feat{display:flex;gap:12px;align-items:flex-start}
+    .ico{width:44px;height:44;border-radius:10px;background:var(--glass);display:grid;place-items:center;color:var(--accent);font-weight:700}
+    .small{font-size:14px;color:var(--muted)}
+
+    .actions{display:flex;gap:12px;margin-top:20px}
+    .btn{padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#041018}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--accent)}
+
+    /* right card */
+    .card-aside{padding:20px}
+    .price{display:flex;align-items:center;gap:12px}
+    .price b{font-size:28px}
+    .pill{background:rgba(255,255,255,0.05);padding:8px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    .specs{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+    .spec{display:flex;justify-content:space-between;color:var(--muted);font-size:14px}
+
+    /* pricing table */
+    .pricing{display:flex;gap:12px;margin-top:18px}
+    .price-card{flex:1;padding:14px;border-radius:12px;background:rgba(255,255,255,0.02)}
+    .price-card h3{margin:6px 0}
+    .price-card ul{margin:10px 0 0;padding:0 0 0 18px;color:var(--muted)}
+
+    /* features grid */
+    .full-features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+    .feature-card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+
+    footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:28px}
+    .modal{background:#071026;border-radius:14px;padding:22px;min-width:320px;max-width:720px;border:1px solid rgba(255,255,255,0.04)}
+    .modal h2{margin:0 0 10px}
+    .modal .row{display:flex;gap:8px;margin-top:8px}
+    .input{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .cta-row{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .container{padding:18px}
+      .full-features{grid-template-columns:1fr}
+      .brand h1{display:none}
+    }
+
+    /* tiny touches */
+    .badge{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:6px 8px;border-radius:999px;font-weight:700;color:#041018;font-size:12px}
+    .muted{color:var(--muted)}
+
+    /* slider */
+    .slider{display:flex;gap:8px;overflow:hidden}
+    .testimonial{min-width:220px;padding:12px;border-radius:12px;background:rgba(255,255,255,0.02)}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">E-NEPAL GAMES</h1>
-        <table class="scoreboard">
-            <thead>
-                <tr id="scoreboard-header">
-                    <!-- Static Header Rows -->
-                    <th>#</th>
-                    <th>TEAM NAME</th>
-                    <th>ALIVE</th>
-                    <th>POINTS</th>
-                    <th>KILLS</th>
-                </tr>
-            </thead>
-            <tbody id="scoreboard-body">
-                <!-- Dynamic Rows will be inserted here by JavaScript -->
-            </tbody>
-        </table>
-        <div id="error-message" style="display: none; color: red; text-align: center; margin-top: 20px;">
-            Error loading leaderboard data. Please try again later.
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">M</div>
+        <div>
+          <h1>Matrix Bot <span class="tag">— Premium</span></h1>
+          <div class="tag">Pro features for server owners & tournament managers</div>
         </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <div class="badge">Save 20% — Launch offer</div>
+        <button class="btn btn-ghost" id="open-install">Install</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="panel">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px">
+          <div>
+            <h2 class="headline">Powerful tournament & server automation for Discord</h2>
+            <p class="lead">Matrix Bot Premium adds priority features — auto grouping, points banners, role automation, dedicated support and exclusive UI themes. Designed for event organizers and communities that need reliability at scale.</p>
+            <div class="features">
+              <div class="feat"><div class="ico">G</div><div><strong>Auto Groups</strong><div class="small">Split teams, private group channels, auto-roles.</div></div></div>
+              <div class="feat"><div class="ico">P</div><div><strong>Points GFX</strong><div class="small">Export 1920×1080 banners with branded headers.</div></div></div>
+              <div class="feat"><div class="ico">S</div><div><strong>Priority Support</strong><div class="small">Faster responses & custom setup.</div></div></div>
+              <div class="feat"><div class="ico">A</div><div><strong>Auto Confirm</strong><div class="small">Reminders, confirmations, no-shows handling.</div></div></div>
+            </div>
+            <div class="actions">
+              <button class="btn btn-primary" id="open-buy">Get Premium</button>
+              <button class="btn btn-ghost" id="open-demo">Live Demo</button>
+            </div>
+          </div>
+
+          <aside class="card-aside">
+            <div class="pill">Monthly • Cancel anytime</div>
+            <div style="margin-top:12px" class="price"><b>$6.99</b><div class="muted">/month</div></div>
+            <div class="specs">
+              <div class="spec"><span>Servers supported</span><span>Up to 5</span></div>
+              <div class="spec"><span>Group size</span><span>12 per group</span></div>
+              <div class="spec"><span>Points banners</span><span>Unlimited</span></div>
+            </div>
+
+            <div class="pricing">
+              <div class="price-card">
+                <h3>Starter</h3>
+                <div class="small muted">Best for small communities</div>
+                <ul>
+                  <li>Auto groups</li>
+                  <li>Points export</li>
+                </ul>
+              </div>
+              <div class="price-card">
+                <h3>Pro</h3>
+                <div class="small muted">Includes custom branding</div>
+                <ul>
+                  <li>Priority support</li>
+                  <li>Dedicated command aliases</li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="full-features" style="margin-top:20px">
+          <div class="feature-card">
+            <strong>Role automation</strong>
+            <p class="small muted">Assign and rotate admin/streamer roles automatically for events.</p>
+          </div>
+          <div class="feature-card">
+            <strong>Private group channels</strong>
+            <p class="small muted">Create ephemeral channels visible only to group members.</p>
+          </div>
+          <div class="feature-card">
+            <strong>API & webhooks</strong>
+            <p class="small muted">Trigger external webhooks when a match ends or points update.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="panel">
+        <h3 style="margin-top:0">Quick overview</h3>
+        <p class="small muted">Install Matrix Bot, link your server, then enable Premium from the dashboard or use the purchase modal below. The bot will automatically migrate eligible settings.</p>
+
+        <div style="margin-top:12px">
+          <div class="small muted">Recent testimonials</div>
+          <div class="slider" id="testi">
+            <div class="testimonial">"Saved us hours — group creation is flawless." — <em>Lux Esports</em></div>
+            <div class="testimonial">"The points banners look pro on streams." — <em>NexusCup</em></div>
+            <div class="testimonial">"Setup support was quick and helpful." — <em>Skyline</em></div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:8px;flex-direction:column">
+          <button class="btn btn-primary" id="copy-code">Copy Install Snippet</button>
+          <button class="btn btn-ghost" id="open-support">Contact Support</button>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © Matrix Bot — Built for tournaments · <span class="muted">Need custom integration? DM our support</span>
+    </footer>
+  </div>
+
+  <!-- Modal: Buy -->
+  <div class="modal-backdrop" id="modal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h2 id="modal-title">Purchase Matrix Bot Premium</h2>
+      <p class="muted">Choose a plan and enter your email to receive the license key.</p>
+      <div class="row">
+        <select class="input" id="plan-select">
+          <option value="starter">Starter — $4.99 / month</option>
+          <option value="pro">Pro — $10.99 / month</option>
+          <option value="yearly">Pro Yearly — $99 / year (best)</option>
+        </select>
+      </div>
+      <div class="row">
+        <input class="input" id="email" placeholder="you@domain.com" type="email" />
+      </div>
+      <div class="cta-row">
+        <button class="btn btn-ghost" id="cancel">Cancel</button>
+        <button class="btn btn-primary" id="buy">Buy & Generate Key</button>
+      </div>
+      <div id="receipt" style="margin-top:10px;display:none;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;font-size:13px"></div>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <script>
+    // Simple UI interactions (no external services)
+    const modal = document.getElementById('modal');
+    document.getElementById('open-buy').addEventListener('click',()=>modal.style.display='flex');
+    document.getElementById('open-install').addEventListener('click',()=>{
+      navigator.clipboard?.writeText('https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot%20applications.commands').then(()=>alert('Install link copied to clipboard'))
+    });
+    document.getElementById('open-demo').addEventListener('click',()=>alert('Demo mode: try commands in a test server.'))
+    document.getElementById('cancel').addEventListener('click',()=>modal.style.display='none');
+
+    document.getElementById('buy').addEventListener('click',()=>{
+      const email = document.getElementById('email').value.trim();
+      const plan = document.getElementById('plan-select').value;
+      if(!email || !email.includes('@')){alert('Please enter a valid email');return}
+      // fake key generation on client only (replace with server logic)
+      const key = 'MX-'+btoa(email+Date.now()).slice(0,24).replace(/=/g,'').toUpperCase();
+      const receipt = document.getElementById('receipt');
+      receipt.style.display='block';
+      receipt.innerHTML = `<strong>Success</strong><div class="muted">License key for ${plan}:</div><div style="margin-top:6px;padding:8px;background:rgba(255,255,255,0.02);border-radius:8px;word-break:break-all">${key}</div><div style="margin-top:8px"><button class="btn btn-primary" id="copy-key">Copy key</button></div>`;
+      document.getElementById('copy-key').addEventListener('click',()=>{
+        navigator.clipboard.writeText(key).then(()=>alert('Key copied'))
+      });
+    });
+
+    document.getElementById('copy-code').addEventListener('click',async ()=>{
+      const snippet = `// Matrix Bot install snippet\n// Add bot with required permissions and invite link:\nhttps://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=bot%20applications.commands`;
+      try{await navigator.clipboard.writeText(snippet); alert('Install snippet copied');}catch(e){alert('Copy failed — highlight and copy manually.')}
+    });
+
+    // tiny slider auto-scroll
+    const slider = document.getElementById('testi');
+    let pos = 0;
+    setInterval(()=>{
+      pos += 232; if(pos > slider.scrollWidth - slider.clientWidth) pos = 0;
+      slider.scrollTo({left:pos,behavior:'smooth'});
+    },3500);
+
+    // small accessibility: close modal on ESC
+    document.addEventListener('keydown',(e)=>{ if(e.key === 'Escape') modal.style.display='none' })
+  </script>
 </body>
 </html>
